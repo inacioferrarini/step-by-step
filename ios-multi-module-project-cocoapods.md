@@ -13,6 +13,7 @@ Convering from creating the app itself to creating modules and adding these modu
 * ***APP_FOLDER***: The folder where the App project is. Will be created inside ***REPOSITORY_ROOT_FOLDER***.
 * ***MODULES_FOLDER***: Path for the module itself. Will be created inside ***REPOSITORY_ROOT_FOLDER***. In this guide, will be named `modules`
 * ***TEMP_FOLDER***: Path for the temporary folder, where temporary artifacts will be created. Will be created inside ***REPOSITORY_ROOT_FOLDER***. In this guide, will be named `temp`.
+* ***PRIVATE_REPO_NAME***: Name for private cocoapods' PodSpecs repository
 
 ## Example:
 
@@ -21,6 +22,7 @@ Convering from creating the app itself to creating modules and adding these modu
 * ***APP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app
 * ***MODULES_FOLDER***: ~/Developer/iOS/pipoca/modules
 * ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/temp
+* ***PRIVATE_REPO_NAME***: PRIVATE_SPECS
 
 # Requirements
 
@@ -216,7 +218,8 @@ Each module will have its own git repository.
 
 ### Updating Default Pod Lib configuration
 
-Inside ***[MODULE_NAME]/[MODULE_NAME]/Classes***, create a folder named ***[MODULE_NAME]***
+Inside ***[MODULE_NAME]/[MODULE_NAME]***, create a folder named ***Sources*** and delete ***Classes*** folder.
+create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
 ### Update `.podspec` file
 
@@ -224,8 +227,8 @@ Update `[MODULE_NAME]/[MODULE_NAME].podspec`
 ```ruby
   s.default_subspec = "[MODULE_NAME]"
   s.subspec "[MODULE_NAME]" do |ss|
-    ss.source_files  = "[MODULE_NAME]/Classes/[MODULE_NAME]/**/*.swift"
-    ss.resources = ["[MODULE_NAME]/Classes/[MODULE_NAME]/**/*.storyboard"]
+    ss.source_files  = "[MODULE_NAME]/Sources/[MODULE_NAME]/**/*.swift"
+    ss.resources = ["[MODULE_NAME]/Sources/[MODULE_NAME]/**/*.storyboard"]
     ss.framework  = "Foundation"
  end
 ```
@@ -234,8 +237,8 @@ For modules used by other modules, it is required to push the podspec to the pri
 ```bash
 $ git tag 'v0.0.2'
 $ git push --tags
-$ bundle exec pod repo update [REPO_NAME]
-$ bundle exec pod repo push [REPO_NAME] module_name.podspec
+$ bundle exec pod repo update [PRIVATE_REPO_NAME]
+$ bundle exec pod repo push [PRIVATE_REPO_NAME] module_name.podspec
 ```
 
 Go to ***MODULES_FOLDER***
