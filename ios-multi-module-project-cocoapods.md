@@ -11,16 +11,16 @@ Convering from creating the app itself to creating modules and adding these modu
 * ***GIT_URL***: URL for git repository.
 * ***REPOSITORY_ROOT_FOLDER***: Checkout path for ***GIT_URL***.
 * ***APP_FOLDER***: The folder where the App project is. Will be created inside ***REPOSITORY_ROOT_FOLDER***.
-* ***MODULES_FOLDER***: Path for the module itself. Will be created inside ***APP_FOLDER***. In this guide, will be named `modules`
-* ***TEMP_FOLDER***: Path for the temporary folder, where temporary artifacts will be created. Will be created inside ***APP_FOLDER***. In this guide, will be named `temp`.
+* ***MODULES_FOLDER***: Path for the module itself. Will be created inside ***REPOSITORY_ROOT_FOLDER***. In this guide, will be named `modules`
+* ***TEMP_FOLDER***: Path for the temporary folder, where temporary artifacts will be created. Will be created inside ***REPOSITORY_ROOT_FOLDER***. In this guide, will be named `temp`.
 
 ## Example:
 
 * ***GIT_URL***: git@github.com:inacioferrarini/pipoca.git
 * ***REPOSITORY_ROOT_FOLDER***: ~/Developer/iOS/pipoca
 * ***APP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app
-* ***MODULES_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app/modules
-* ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app/temp
+* ***MODULES_FOLDER***: ~/Developer/iOS/pipoca/modules
+* ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/temp
 
 # Requirements
 
