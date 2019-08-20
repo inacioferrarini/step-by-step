@@ -222,7 +222,7 @@ Inside ***[MODULE_NAME]/[MODULE_NAME]***, create a folder named ***Sources*** an
 
 Create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
-### Update `.podspec` file
+### Update podspec file
 
 Update `[MODULE_NAME]/[MODULE_NAME].podspec`
 ```ruby
