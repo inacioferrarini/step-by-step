@@ -219,7 +219,8 @@ Each module will have its own git repository.
 ### Updating Default Pod Lib configuration
 
 Inside ***[MODULE_NAME]/[MODULE_NAME]***, create a folder named ***Sources*** and delete ***Classes*** folder.
-create a folder named ***[MODULE_NAME]*** inside ***Sources***.
+
+Create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
 ### Update `.podspec` file
 
