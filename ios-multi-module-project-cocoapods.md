@@ -241,7 +241,7 @@ $ bundle exec pod repo push [REPO_NAME] module_name.podspec
 Go to ***MODULES_FOLDER***
 
 ```bash
-$ git submodule add [MODULE_NAME] [MODULE_NAME]
+$ git submodule add [GIT_MODULE_URL] [MODULE_NAME]
 ```
 
 Finally, add the new module to the main App.
