@@ -224,7 +224,7 @@ Create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
 ### Update podspec file
 
-Update `[MODULE_NAME]/[MODULE_NAME].podspec`
+Update ***MODULE_NAME/MODULE_NAME.podspec***
 ```ruby
   s.default_subspec = "[MODULE_NAME]"
   s.subspec "[MODULE_NAME]" do |ss|
