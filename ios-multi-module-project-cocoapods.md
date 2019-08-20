@@ -194,7 +194,7 @@ Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be l
 
 Create ***TEMP_FOLDER*** inside ***APP_FOLDER***, where all temporary modules will be located.
 
-## Step 8: Creating a Module
+## Step 9: Creating a Module
 
 A module is used to keep features organized and grouped together, helps to avoid code duplication and allows to isolate features and provide a public-acces entry point to a feature.
 
@@ -214,11 +214,11 @@ Each module will have its own git repository.
 # View based testing: Yes
 ```
 
-### Step 8.1: Updating Default Pod Lib configuration
+### Updating Default Pod Lib configuration
 
 Inside ***[MODULE_NAME]/[MODULE_NAME]/Classes***, create a folder named ***[MODULE_NAME]***
 
-### Step 8.2: Update `.podspec` file
+### Update `.podspec` file
 
 Update `[MODULE_NAME]/[MODULE_NAME].podspec`
 ```ruby
