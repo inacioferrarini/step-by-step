@@ -40,14 +40,6 @@ Create a repository to host it. Follow the instructions from the project host fo
 
 Create the project on Xcode, inside ***REPOSITORY_ROOT_FOLDER***. The project location will be refered as ***APP_FOLDER***.
 
-## Step 3: Initialize CocoaPods
-
-Execute, inside ***APP_FOLDER***:
-
-```bash
-bundle exec pod init
-```
-
 ## Step 3: Gitignore Setup
 
 Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.gitignore***, with the content:
@@ -188,7 +180,15 @@ or download it inside ***REPOSITORY_ROOT_FOLDER***:
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.jazzy.yml
 ```
 
-## Step 7: Folder Structure for Modules
+## Step 7: Initialize CocoaPods
+
+Execute, inside ***APP_FOLDER***:
+
+```bash
+bundle exec pod init
+```
+
+## Step 8: Folder Structure for Modules
 
 Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be located.
 
