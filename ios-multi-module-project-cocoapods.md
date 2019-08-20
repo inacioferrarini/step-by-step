@@ -1,41 +1,56 @@
 # About
 
-This guide provides a step-by-step approach in order to create a modular iOS App.
+This guide provides a step-by-step approach in order to create a modular iOS App, convering from creating the app itself to creating modules and adding these modules to the app.
 
-To share the artifacts, `CocoaPods` will be used.
+To share the artifacts, *CocoaPods* will be used.
 
-In order to check `CocoaPods` setup, check the guide here: [Cocoapods Setup](cocoapods-setup.md)
+Convering from creating the app itself to creating modules and adding these modules to the app.
+
+# Conventions
+
+* ***GIT_URL***: URL for git repository.
+* ***REPOSITORY_ROOT_FOLDER***: Checkout path for ***GIT_URL***.
+* ***APP_FOLDER***: The folder where the App project is. Will be created inside ***REPOSITORY_ROOT_FOLDER***.
+* ***MODULES_FOLDER***: Path for the module itself. Will be created inside ***APP_FOLDER***. In this guide, will be named `modules`
+* ***TEMP_FOLDER***: Path for the temporary folder, where temporary artifacts will be created. Will be created inside ***APP_FOLDER***. In this guide, will be named `temp`.
+
+## Example:
+
+* ***GIT_URL***: git@github.com:inacioferrarini/pipoca.git
+* ***REPOSITORY_ROOT_FOLDER***: ~/Developer/iOS/pipoca
+* ***APP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app
+* ***MODULES_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app/modules
+* ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app/temp
 
 # Requirements
 
-[Cocoapods](cocoapods-setup.md)
+[Cocoapods](cocoapods-setup.md) - External dependencies and modules management.
 
 # Project Setup
 
 ## Step 1: Git Repository Setup
 
-Do the Git setup for the project.
+Create a repository to host it. Follow the instructions from the project host for its initial setup.
 
-Create a repository to host it. The simplest solution is to create it on github. Follow the instructions from the project host for its initial setup.
-
-It is handy to init the repository with a README.MD file. Other options, like license and .gitignore will be added in a future moment.
-
-### Note:
-
-`[GIT_URL]` will be used to reference the git url for the created repository.
-
-`[PROJECT_ROOT]` will be used to reference the checkout path of the created repository, where the project will be created.
-
-The default branch will be `master`. Is recommended to change to `develop`
-
+> **Notes:**
+> 1. It is handy to init the repository with a README.MD file. This guide will add required files.
+> 1. The default branch will be *master*. Is recommended to change it to *develop*.
 
 ## Step 2: Creating the Project
 
-Create the project on Xcode, inside `[PROJECT_ROOT]`. The project will be refered as `[PROJECT]`.
+Create the project on Xcode, inside ***REPOSITORY_ROOT_FOLDER***. The project location will be refered as ***APP_FOLDER***.
+
+## Step 3: Initialize CocoaPods
+
+Execute, inside ***APP_FOLDER***:
+
+```bash
+bundle exec pod init
+```
 
 ## Step 3: Gitignore Setup
 
-Add, inside `[PROJECT_ROOT]` folder, a file named `.gitignore`, with the content:
+Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.gitignore***, with the content:
 
 ```bash
 ### Swift ###
@@ -112,11 +127,11 @@ EnsureIT/
 
 ### Temporary folder ###
 
-Temp/
+temp/
 
 ```
 
-or download it inside `[PROJECT_ROOT]` folder:
+or download it inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.gitignore
@@ -124,7 +139,7 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 4: Gemfile Setup
 
-Add, inside `[PROJECT_ROOT]` folder, a file named `Gemfile`, with the content:
+Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***Gemfile***, with the content:
 
 ```bash
 source 'https://rubygems.org'
@@ -134,7 +149,7 @@ gem 'cocoapods', '~> 1.7.4'
 gem 'slather', '~> 2.4.7'
 ```
 
-or download it inside `[PROJECT]` folder:
+or download it inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/Gemfile
@@ -142,12 +157,12 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 5: Ruby Version Setup
 
-Add, inside `[PROJECT]` folder, a file named `.ruby-version`, with the content:
+Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.ruby-version***, with the content:
 ```bash
 2.5.1
 ```
 
-or download it inside `[PROJECT]` folder:
+or download it inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.ruby-version
@@ -155,7 +170,7 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 6: Jazzy Setup
 
-Add, inside `[PROJECT_ROOT]` folder, a file named `.jazzy.yml`, with the content:
+Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.jazzy.yml***, with the content:
 ```yaml
 author: [YOUR NAME]
 author_url: [TWITTER_URL]
@@ -167,7 +182,7 @@ theme: fullwidth
 xcodebuild_arguments: [-workspace, '[PROJECT].xcworkspace', -scheme, '[PROJECT_SCHEME]']
 ```
 
-or download it inside `[PROJECT_ROOT]` folder:
+or download it inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.jazzy.yml
@@ -175,9 +190,9 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 7: Folder Structure for Modules
 
-Create a folder named `modules` inside `[PROJECT]`, where all modules will be located.
+Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be located.
 
-Create a folder named `Temp` inside `[PROJECT]`, where all modules will be placed upon creation, until being pushed to repository and fetched inside `modules`, and then removed from `Temp` folder.
+Create ***TEMP_FOLDER*** inside ***APP_FOLDER***, where all temporary modules will be located.
 
 ## Step 8: Creating a Module
 
@@ -187,12 +202,8 @@ Each module will have its own git repository.
 
 ### Creating a New Module
 
-A temporary folder will be used, named `[PROJECT_ROOT]/Temp`
-
-Once the module is created and pushed into `Git`, it will be added as a `git submodule` inside `[PROJECT_ROOT]/modules` folder.
-
 ```bash
-# Inside TEMP folder, execute
+# Inside TEMP folder, to create a module named [MODULE_NAME] execute:
 1. bundle exec pod lib create [MODULE_NAME]
 
 # Some questions will be asked:
@@ -205,16 +216,16 @@ Once the module is created and pushed into `Git`, it will be added as a `git sub
 
 ### Step 8.1: Updating Default Pod Lib configuration
 
-Inside `module_name/module_name/Classes`, create a folder named `module_name`
+Inside ***[MODULE_NAME]/[MODULE_NAME]/Classes***, create a folder named ***[MODULE_NAME]***
 
 ### Step 8.2: Update `.podspec` file
 
-Update `module_name/module_name.podspec`
+Update `[MODULE_NAME]/[MODULE_NAME].podspec`
 ```ruby
-  s.default_subspec = "module_name"
-  s.subspec "module_name" do |ss|
-    ss.source_files  = "module_name/Classes/module_name/**/*.swift"
-    ss.resources = ["module_name/Classes/module_name/**/*.storyboard"]
+  s.default_subspec = "[MODULE_NAME]"
+  s.subspec "[MODULE_NAME]" do |ss|
+    ss.source_files  = "[MODULE_NAME]/Classes/[MODULE_NAME]/**/*.swift"
+    ss.resources = ["[MODULE_NAME]/Classes/[MODULE_NAME]/**/*.storyboard"]
     ss.framework  = "Foundation"
  end
 ```
@@ -227,15 +238,15 @@ $ bundle exec pod repo update [REPO_NAME]
 $ bundle exec pod repo push [REPO_NAME] module_name.podspec
 ```
 
-Go to `[PROJECT_ROOT]/modules` folder
+Go to ***MODULES_FOLDER***
 
 ```bash
-$ git submodule add path folder
+$ git submodule add [MODULE_NAME] [MODULE_NAME]
 ```
 
 Finally, add the new module to the main App.
 
-Edit `[PROJECT_ROOT]/[PROJECT]/Podfile`
+Edit ***APP_FOLDER/Podfile***
 
 Add the new dependency
 
