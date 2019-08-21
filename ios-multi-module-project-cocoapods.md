@@ -192,9 +192,9 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 8: Swiftlint
 
-Add, inside ***APP_FOLDER***, a file named ***.swiftlint.yml***, with the content:
+Add inside ***APP_FOLDER***, a file named ***.swiftlint.yml***, with the content:
 ```yaml
-disabled_rules: # rule identifiers to exclude from running
+disabled_rules:
   - trailing_whitespace
   - cyclomatic_complexity
   - function_body_length
@@ -204,28 +204,23 @@ disabled_rules: # rule identifiers to exclude from running
   - large_tuple
   - todo
 
-opt_in_rules: # some rules are only opt-in
+opt_in_rules:
   - control_statement
   - empty_count
   - trailing_newline
   - colon
   - comma
 
-excluded: # paths to ignore during linting. Takes precedence over `included`.
+excluded:
   - Pods
   - Feature
   - Carthage
 
-# configurable rules can be customized from this configuration file
-# binary rules can set their severity level
-
-force_cast: warning # implicitly
+force_cast: warning
 
 force_try:
-  severity: warning # explicitly
+  severity: warning
 
-# rules that have both warning and error levels, can set just the warning level
-# implicitly
 function_body_length:
   warning: 50
   error: 60
@@ -233,7 +228,7 @@ function_body_length:
 line_length: 200
 
 identifier_name:
-  excluded: # excluded via string array
+  excluded:
     - id
     - URL
 
@@ -289,7 +284,7 @@ Update `[MODULE_NAME]/[MODULE_NAME].podspec`
  end
 ```
 
-Inside ***[MODULE_NAME]***, execute [## Step 7: Jazzy Setup](##-Step-7:-Jazzy-Setup) and [## Step 8: Swiftlint](##-Step-8:-Swiftlint)
+Inside ***[MODULE_NAME]***, execute  **Jazzy Setup** and **Swiftlint** for the new module.
 
 For modules used by other modules, it is required to push the podspec to the private repository
 ```bash
