@@ -162,9 +162,17 @@ or download it inside ***REPOSITORY_ROOT_FOLDER***:
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.ruby-version
 ```
 
-## Step 6: Jazzy Setup
+## Step 6: Initialize CocoaPods
 
-Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.jazzy.yml***, with the content:
+Execute, inside ***APP_FOLDER***:
+
+```bash
+bundle exec pod init
+```
+
+## Step 7: Jazzy Setup
+
+Add, inside ***APP_FOLDER***, a file named ***.jazzy.yml***, with the content:
 ```yaml
 author: [YOUR NAME]
 author_url: [TWITTER_URL]
@@ -176,27 +184,75 @@ theme: fullwidth
 xcodebuild_arguments: [-workspace, '[PROJECT].xcworkspace', -scheme, '[PROJECT_SCHEME]']
 ```
 
-or download it inside ***REPOSITORY_ROOT_FOLDER***:
+or download it inside ***APP_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.jazzy.yml
 ```
 
-## Step 7: Initialize CocoaPods
+## Step 8: Swiftlint
 
-Execute, inside ***APP_FOLDER***:
+Add, inside ***APP_FOLDER***, a file named ***.swiftlint.yml***, with the content:
+```yaml
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - cyclomatic_complexity
+  - function_body_length
+  - identifier_name
+  - empty_count
+  - type_name
+  - large_tuple
+  - todo
 
-```bash
-bundle exec pod init
+opt_in_rules: # some rules are only opt-in
+  - control_statement
+  - empty_count
+  - trailing_newline
+  - colon
+  - comma
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - Feature
+  - Carthage
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+
+force_cast: warning # implicitly
+
+force_try:
+  severity: warning # explicitly
+
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+function_body_length:
+  warning: 50
+  error: 60
+
+line_length: 200
+
+identifier_name:
+  excluded: # excluded via string array
+    - id
+    - URL
+
+reporter: "xcode"
 ```
 
-## Step 8: Folder Structure for Modules
+or download it inside ***APP_FOLDER***:
+
+```bash
+curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.swiftlint.yml
+```
+
+## Step 9: Folder Structure for Modules
 
 Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be located.
 
 Create ***TEMP_FOLDER*** inside ***APP_FOLDER***, where all temporary modules will be located.
 
-## Step 9: Creating a Module
+## Step 10: Creating a Module
 
 A module is used to keep features organized and grouped together, helps to avoid code duplication and allows to isolate features and provide a public-acces entry point to a feature.
 
@@ -232,6 +288,13 @@ Update `[MODULE_NAME]/[MODULE_NAME].podspec`
     ss.framework  = "Foundation"
  end
 ```
+
+Inside ***[MODULE_NAME]***, execute steps 7 and 8.
+
+[## Step 7: Jazzy Setup](##-Step-7:-Jazzy-Setup)
+
+[## Step 8: Swiftlint](##-Step-8:-Swiftlint)
+
 
 For modules used by other modules, it is required to push the podspec to the private repository
 ```bash
