@@ -26,7 +26,8 @@ Convering from creating the app itself to creating modules and adding these modu
 
 # Requirements
 
-[Cocoapods](cocoapods-setup.md) - External dependencies and modules management.
+[CocoaPods](cocoapods-setup.md) - External dependencies and modules management.
+[Swift Lint](swift-lint-setup.md) - Source code structure validation.
 
 # Project Setup
 
@@ -239,6 +240,16 @@ or download it inside ***APP_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.swiftlint.yml
+```
+
+Add Swiftlint configuration to the build phase:
+Add a *Run Script Phase*
+```bash
+if which swiftlint >/dev/null; then
+  swiftlint
+else
+  echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+fi
 ```
 
 ## Step 9: Folder Structure for Modules
