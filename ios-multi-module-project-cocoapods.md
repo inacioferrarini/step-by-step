@@ -275,12 +275,11 @@ Each module will have its own git repository.
 ### Updating Default Pod Lib configuration
 
 Inside ***[MODULE_NAME]/[MODULE_NAME]***, create a folder named ***Sources*** and delete ***Classes*** folder.
+create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
-Create a folder named ***[MODULE_NAME]*** inside ***Sources***.
+### Update `.podspec` file
 
-### Update podspec file
-
-Update ***MODULE_NAME/MODULE_NAME.podspec***
+Update `[MODULE_NAME]/[MODULE_NAME].podspec`
 ```ruby
   s.default_subspec = "[MODULE_NAME]"
   s.subspec "[MODULE_NAME]" do |ss|
@@ -290,12 +289,7 @@ Update ***MODULE_NAME/MODULE_NAME.podspec***
  end
 ```
 
-Inside ***[MODULE_NAME]***, execute steps 7 and 8.
-
-[## Step 7: Jazzy Setup](##-Step-7:-Jazzy-Setup)
-
-[## Step 8: Swiftlint](##-Step-8:-Swiftlint)
-
+Inside ***[MODULE_NAME]***, execute [## Step 7: Jazzy Setup](##-Step-7:-Jazzy-Setup) and [## Step 8: Swiftlint](##-Step-8:-Swiftlint)
 
 For modules used by other modules, it is required to push the podspec to the private repository
 ```bash
