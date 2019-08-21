@@ -27,6 +27,7 @@ Convering from creating the app itself to creating modules and adding these modu
 # Requirements
 
 [CocoaPods](cocoapods-setup.md) - External dependencies and modules management.
+
 [Swift Lint](swift-lint-setup.md) - Source code structure validation.
 
 # Project Setup
