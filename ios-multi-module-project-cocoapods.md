@@ -275,11 +275,12 @@ Each module will have its own git repository.
 ### Updating Default Pod Lib configuration
 
 Inside ***[MODULE_NAME]/[MODULE_NAME]***, create a folder named ***Sources*** and delete ***Classes*** folder.
-create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
-### Update `.podspec` file
+Create a folder named ***[MODULE_NAME]*** inside ***Sources***.
 
-Update `[MODULE_NAME]/[MODULE_NAME].podspec`
+### Update podspec file
+
+Update ***MODULE_NAME/MODULE_NAME.podspec***
 ```ruby
   s.default_subspec = "[MODULE_NAME]"
   s.subspec "[MODULE_NAME]" do |ss|
