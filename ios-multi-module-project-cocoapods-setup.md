@@ -46,88 +46,7 @@ Create the project on Xcode, inside ***REPOSITORY_ROOT_FOLDER***. The project lo
 
 ## Step 3: Gitignore Setup
 
-Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.gitignore***, with the content:
-
-```bash
-### Swift ###
-# Xcode
-
-## Build generated
-build/
-DerivedData/
-
-## Various settings
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata/
-
-## Other
-*.moved-aside
-*.xccheckout
-*.xcscmblueprint
-
-## Obj-C/Swift specific
-*.hmap
-*.ipa
-*.dSYM.zip
-*.dSYM
-
-.build/
-
-# CocoaPods
-Pods/
-
-# Carthage
-# Carthage/Checkouts
-# Carthage/Build
-
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
-fastlane/slather_report
-
-### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
-
-### Idea (for Appcode users) ###
-.idea/
-
-.DS_Store
-
-### ixguard ###
-
-ixguard-license.txt
-ixguard.log
-mapping.yml
-statistics.yml
-
-### slather ###
-
-html/
-
-### EnsureIT ###
-
-EnsureIT/
-
-### Temporary folder ###
-
-temp/
-
-```
-
-or download it inside ***REPOSITORY_ROOT_FOLDER***:
+Add, inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.gitignore
@@ -135,17 +54,7 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 4: Gemfile Setup
 
-Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***Gemfile***, with the content:
-
-```bash
-source 'https://rubygems.org'
-
-gem 'fastlane', '~> 2.120.0'
-gem 'cocoapods', '~> 1.7.4'
-gem 'slather', '~> 2.4.7'
-```
-
-or download it inside ***REPOSITORY_ROOT_FOLDER***:
+Add, inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/Gemfile
@@ -153,12 +62,7 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 5: Ruby Version Setup
 
-Add, inside ***REPOSITORY_ROOT_FOLDER***, a file named ***.ruby-version***, with the content:
-```bash
-2.5.1
-```
-
-or download it inside ***REPOSITORY_ROOT_FOLDER***:
+Add, inside ***REPOSITORY_ROOT_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.ruby-version
@@ -174,19 +78,7 @@ bundle exec pod init
 
 ## Step 7: Jazzy Setup
 
-Add, inside ***APP_FOLDER***, a file named ***.jazzy.yml***, with the content:
-```yaml
-author: [YOUR NAME]
-author_url: [TWITTER_URL]
-github_url: [GIT_URL]
-root_url: [DOCUMENTATION_REPOSITORY_URL]
-module: [PROJECT_NAME]
-output: docs
-theme: fullwidth
-xcodebuild_arguments: [-workspace, '[PROJECT].xcworkspace', -scheme, '[PROJECT_SCHEME]']
-```
-
-or download it inside ***APP_FOLDER***:
+Add, inside ***APP_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.jazzy.yml
@@ -194,50 +86,7 @@ curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/re
 
 ## Step 8: Swiftlint
 
-Add inside ***APP_FOLDER***, a file named ***.swiftlint.yml***, with the content:
-```yaml
-disabled_rules:
-  - trailing_whitespace
-  - cyclomatic_complexity
-  - function_body_length
-  - identifier_name
-  - empty_count
-  - type_name
-  - large_tuple
-  - todo
-
-opt_in_rules:
-  - control_statement
-  - empty_count
-  - trailing_newline
-  - colon
-  - comma
-
-excluded:
-  - Pods
-  - Feature
-  - Carthage
-
-force_cast: warning
-
-force_try:
-  severity: warning
-
-function_body_length:
-  warning: 50
-  error: 60
-
-line_length: 200
-
-identifier_name:
-  excluded:
-    - id
-    - URL
-
-reporter: "xcode"
-```
-
-or download it inside ***APP_FOLDER***:
+Add inside ***APP_FOLDER***:
 
 ```bash
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.swiftlint.yml
@@ -296,7 +145,7 @@ Update `[MODULE_NAME]/[MODULE_NAME].podspec`
  end
 ```
 
-Inside ***[MODULE_NAME]***, execute  **Jazzy Setup** and **Swiftlint** for the new module.
+Inside ***[MODULE_NAME]***, execute **Jazzy Setup** and **Swiftlint** for the new module.
 
 For modules used by other modules, it is required to push the podspec to the private repository
 ```bash
