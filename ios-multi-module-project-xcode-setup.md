@@ -2,7 +2,7 @@
 
 This guide provides a step-by-step approach in order to create a modular iOS App, convering from creating the app itself to creating modules and adding these modules to the app.
 
-To share the artifacts, *Carthage* will be used.
+The projects will use Xcode for each module in the app.
 
 Convering from creating the app itself to creating modules and adding these modules to the app.
 
@@ -23,8 +23,6 @@ Convering from creating the app itself to creating modules and adding these modu
 * ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/temp
 
 # Requirements
-
-[Carthage](carthage-setup.md) - External dependencies and modules management.
 
 [Swift Lint](swift-lint-setup.md) - Source code structure validation.
 
@@ -66,56 +64,7 @@ Add, inside ***REPOSITORY_ROOT_FOLDER***:
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.ruby-version
 ```
 
-## Step 6: Create Carthage Control Files
-
-Add inside ***APP_FOLDER***, a file named ***Cartfile***, with the content:
-```bash
-github "hackiftekhar/IQKeyboardManager"
-```
-
-Add inside ***APP_FOLDER***, a file named ***Cartfile.private***, with the content:
-```bash
-github "Quick/Quick" "v2.1.0"
-github "Quick/Nimble" "v8.0.2"
-```
-
-Then, update Carthage
-
-```bash
-carthage update --platform iOS --no-use-binaries --cache-builds
-```
-
-From Carthage:
-On your application targets’ General settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.
-
-On your application targets’ Build Phases settings tab, click the + icon and choose New Run Script Phase. Create a Run Script in which you specify your shell (ex: /bin/sh), add the following contents to the script area below the shell:
-
-```bash
-/usr/local/bin/carthage copy-frameworks
-```
-
-Create a file named ***APP_FOLDER/Carthage/InputFiles.xcfilelist*** and a file named ***APP_FOLDER/Carthage/OutputFiles.xcfilelist***
-
-Add the paths to the frameworks you want to use to your ***InputFiles.xcfilelist***. For example:
-
-```bash
-$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework
-```
-
-Add the paths to the copied frameworks to the ***OutputFiles.xcfilelist***. For example:
-
-```bash
-$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework
-```
-
-
-With output files specified alongside the input files, Xcode only needs to run the script when the input files have changed or the output files are missing. This means dirty builds will be faster when you haven't rebuilt frameworks with Carthage.
-
-Add the ***InputFiles.xcfilelist*** to the "Input File Lists" section of the Carthage run script phase
-
-Add the ***OutputFiles.xcfilelist*** to the "Output File Lists" section of the Carthage run script phase
-
-## Step 7: Jazzy Setup
+## Step 6: Jazzy Setup
 
 Add, inside ***APP_FOLDER***:
 
@@ -123,7 +72,7 @@ Add, inside ***APP_FOLDER***:
 curl -O https://raw.githubusercontent.com/inacioferrarini/step-by-step/master/resources/.jazzy.yml
 ```
 
-## Step 8: Swiftlint
+## Step 7: Swiftlint
 
 Add inside ***APP_FOLDER***:
 
@@ -141,13 +90,13 @@ else
 fi
 ```
 
-## Step 9: Folder Structure for Modules
+## Step 8: Folder Structure for Modules
 
 Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be located.
 
 Create ***TEMP_FOLDER*** inside ***APP_FOLDER***, where all temporary modules will be located.
 
-## Step 10: Creating a Module
+## Step 9: Creating a Module
 
 A module is used to keep features organized and grouped together, helps to avoid code duplication and allows to isolate features and provide a public-acces entry point to a feature.
 
@@ -169,10 +118,5 @@ $ git submodule add [GIT_MODULE_URL] [MODULE_NAME]
 
 Finally, add the new module to the main App.
 
-Inside ***APP_FOLDER***, add a new line on ***Cartfile***, with the new module:
 
-```bash
-github "submodule-repository-url" "branch"
-```
 
-Add the new framework as any other Carthage dependencies.
