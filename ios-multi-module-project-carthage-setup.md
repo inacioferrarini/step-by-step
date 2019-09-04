@@ -143,9 +143,9 @@ fi
 
 ## Step 9: Folder Structure for Modules
 
-Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be located.
+Create ***MODULES_FOLDER*** inside ***REPOSITORY_ROOT_FOLDER***, where all modules will be located.
 
-Create ***TEMP_FOLDER*** inside ***APP_FOLDER***, where all temporary modules will be located.
+Create ***TEMP_FOLDER*** inside ***REPOSITORY_ROOT_FOLDER***, where all temporary modules will be located.
 
 ## Step 10: Creating a Module
 

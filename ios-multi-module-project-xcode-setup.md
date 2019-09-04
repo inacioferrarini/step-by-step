@@ -92,9 +92,9 @@ fi
 
 ## Step 8: Folder Structure for Modules
 
-Create ***MODULES_FOLDER*** inside ***APP_FOLDER***, where all modules will be located.
+Create ***MODULES_FOLDER*** inside ***REPOSITORY_ROOT_FOLDER***, where all modules will be located.
 
-Create ***TEMP_FOLDER*** inside ***APP_FOLDER***, where all temporary modules will be located.
+Create ***TEMP_FOLDER*** inside ***REPOSITORY_ROOT_FOLDER***, where all temporary modules will be located.
 
 ## Step 9: Creating a Module
 
@@ -116,7 +116,6 @@ Go to ***MODULES_FOLDER***
 $ git submodule add [GIT_MODULE_URL] [MODULE_NAME]
 ```
 
-Finally, add the new module to the main App.
-
-
-
+Final Steps:
+* Add the new module Framework to the main App in **General** tab.
+* Add the new module project to the **Build Phases**, under ***Target Dependencies***. This way, whenever the content of the module changes, it will be rebuild when build the app itself.
