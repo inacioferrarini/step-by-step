@@ -149,7 +149,7 @@ Inside ***[MODULE_NAME]***, execute **Jazzy Setup** and **Swiftlint** for the ne
 
 For modules used by other modules, it is required to push the podspec to the private repository
 ```bash
-$ git tag 'v0.0.2'
+$ git tag '0.0.2'
 $ git push --tags
 $ bundle exec pod repo update [PRIVATE_REPO_NAME]
 $ bundle exec pod repo push [PRIVATE_REPO_NAME] module_name.podspec
