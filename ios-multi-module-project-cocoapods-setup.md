@@ -20,8 +20,8 @@ Convering from creating the app itself to creating modules and adding these modu
 * ***GIT_URL***: git@github.com:inacioferrarini/pipoca.git
 * ***REPOSITORY_ROOT_FOLDER***: ~/Developer/iOS/pipoca
 * ***APP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app
-* ***MODULES_FOLDER***: ~/Developer/iOS/pipoca/modules
-* ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/temp
+* ***MODULES_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app/modules
+* ***TEMP_FOLDER***: ~/Developer/iOS/pipoca/pipoca-app/temp
 * ***PRIVATE_REPO_NAME***: PRIVATE_SPECS
 
 # Requirements
