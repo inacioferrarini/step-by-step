@@ -26,23 +26,44 @@ hostnamectl set-hostname #new name#
 ```
 
 To install MySQL
+
+Setup Yum repository
 ```bash
 rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
+```
 
+Install MySQL 8 Community Server
+```bash
 sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/mysql-community.repo
-
 yum --enablerepo=mysql80-community install mysql-community-server
+```
 
+Start MySQL Service
+```bash
 service mysqld start
+```
 
+Show the default password for root user
+```bash
 grep "A temporary password" /var/log/mysqld.log
+```
 
+MySQL Secure Installation
+```bash
 mysql_secure_installation
+```
 
+Restart and enable the MySQL service
+```bash
 service mysqld restart
+```
 
+Autostart mysql service on system’s startup:
+```bash
 chkconfig mysqld on
 ```
+
+
 
 Create a firewall rule to allow 3306 access.
 ```bash
