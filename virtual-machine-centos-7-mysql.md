@@ -2,10 +2,6 @@
 
 This guide provides a step-by-step approach in order to create a Virtual Machine running CentOS 7 and MySQL 8.
 
-# Conventions
-
-None
-
 # Requirements
 
 * Virtual Box 6.1
@@ -17,12 +13,10 @@ None
 ## Virtual Machine Setup
 
 Create a Virtual Machine (Linux, Red Hat (64-bit))
+* **RAM** 1024 MB.
+* **DISK**: 8 GB.
 
-**RAM** 1024 MB.
-
-**DISK**: 8 GB.
-
-**Settings** > **Networking** > **Network 1**: Change its type to **Nat Bridgek**.
+**Settings** > **Network** > **Adapter 1**: Change its type to **Bridged Adapter**.
 
 # Network Setup
 
@@ -48,6 +42,11 @@ mysql_secure_installation
 service mysqld restart
 
 chkconfig mysqld on
+```
+
+Create a firewall rule to allow 3306 access.
+```bash
+sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
 ```
 
 In order to allow MySQL root access from any host
