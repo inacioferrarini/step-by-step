@@ -63,8 +63,6 @@ Autostart mysql service on system’s startup:
 chkconfig mysqld on
 ```
 
-
-
 Create a firewall rule to allow 3306 access.
 ```bash
 sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
@@ -73,4 +71,9 @@ sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
 In order to allow MySQL root access from any host
 ```bash
 update user set host='%' where host='localhost';
+```
+
+Allow weak passwords - useful for development environment.
+```bash
+UNINSTALL COMPONENT 'file://component_validate_password';
 ```
